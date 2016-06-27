@@ -1,2 +1,58 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import 'mix-in';
+
+.question-container {
+  margin-top: 25px;
+}
+// @include media-breakpoint-up (sm){
+//   .question-one {
+//     margin-top: 159px;
+//   }
+// }
+
+// @media (max-width: 412px){
+//     .question-one { margin-top: 150px;}
+// }
+
+div.question-one {
+  margin-top: 150px;
+  position: relative;
+  }
+
+body
+ {
+  padding-top: 119px;
+ }
+
+ div.question-one {
+   @include breakpoint(tiny) {
+    margin-top: 300px;
+   }
+ }
+
+ .container > h1 {
+   @include breakpoint(tiny) {
+     font-size: 16pt;
+   }
+ }
+
+ .answers {
+   border-style: solid;
+   margin: 5px;
+ }
+ //
+ // .answerqtwo {
+ //   border-style: solid;
+ //   margin: 5px;
+ // }
+ //
+ // .answerqthree {
+ //   border-style: solid;
+ //   margin: 5px;
+ // }
+ //
+ // .answerqfour {
+ //   border-style: solid;
+ //   margin: 5px;
+ // }

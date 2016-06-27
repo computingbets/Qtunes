@@ -16,6 +16,7 @@ const onSignUp = (event) => {
 
 const onSignIn = (event) => {
  event.preventDefault();
+ getUserIDPlaylist();
  let data = getFormFields(event.target);
  api.signIn(data)
  .done(ui.signInSuccess)
@@ -37,12 +38,46 @@ const onChangePassword = (event) => {
  .fail(ui.failure);
 };
 
+const onGetSong = (event) => {
+  event.preventDefault();
+  let data = $(event.target).attr("id");
+  api.getSong(data)
+  .done(onAddToPlaylist(data))
+  .fail(ui.failure);
+};
+
+const onAddToPlaylist = (data) => {
+  event.preventDefault();
+  api.addToPlaylist(data)
+  .done(ui.success)
+  .fail(ui.failure);
+};
+
+const getUserIDPlaylist = () => {
+  
+};
+
+const onNavSignUp = () => {
+   $('#open-sign-up').modal('show');
+};
+
+const onNavSignIn = () => {
+   $('#open-sign-in').modal('show');
+};
+
+const onNavOptions = () => {
+   $('#open-options').modal('show');
+};
 
 const addHandlers = () => {
  $('#sign-up').on('submit', onSignUp);
  $('#sign-in').on('submit', onSignIn);
  $('#sign-out').on('submit', onSignOut);
  $('#change-password').on('submit', onChangePassword);
+ $('#nav-sign-up').on('click', onNavSignUp);
+ $('#nav-sign-in').on('click', onNavSignIn);
+ $('#nav-options').on('click', onNavOptions);
+ $('.answers').on('click', onGetSong);
 };
 //
 module.exports = {

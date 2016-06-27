@@ -41,9 +41,9 @@ const changePassword = function (data){
   });
 };
 
-const createGame = function (){
+const createPlaylist = function (){
   return $.ajax({
-    url: app.host + "/games",
+    url: app.host + "/playlists",
     method: 'POST',
     headers: {
     Authorization: 'Token token=' + app.user.token,
@@ -54,8 +54,8 @@ const createGame = function (){
 const updateGame = function (index, value) {
     // console.log(ui.createdGame);
       return $.ajax({
-        url: app.host + "/games/" + app.game.id,
-        method: 'PATCH',
+        url: app.host + "/playlists/" + app.playlist.id,
+        method: 'POST',
         headers: {
         Authorization: 'Token token=' + app.user.token,
         },
@@ -71,9 +71,9 @@ const updateGame = function (index, value) {
       });
   };
 
-const getStats = function() {
+const getSong = function(data) {
   return $.ajax({
-    url: app.host + '/games/',
+    url: app.host + '/songs/' + data,
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + app.user.token,
@@ -81,22 +81,49 @@ const getStats = function() {
   });
 };
 
-const gameOver = function() {
-  // console.log("You're inside gameOver");
-  // console.log("app.game is ", app.game);
+onst getUserIDPlaylist = function() {
   return $.ajax({
-    url: app.host + '/games/' + app.game.id,
+    url: app.host + '/users/' + app.current_user.id,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+  });
+};
+
+const addToPlaylist = function(data) {
+  return $.ajax({
+    url: app.host + 'playlists',
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + app.user.token,
     },
-    data: {
-      "game": {
-        "over": true,
-      }
-    }
   });
 };
+
+// const gameOver = function() {
+//   // console.log("You're inside gameOver");
+//   // console.log("app.game is ", app.game);
+//   return $.ajax({
+//     url: app.host + '/games/' + app.game.id,
+//     method: 'PATCH',
+//     headers: {
+//       Authorization: 'Token token=' + app.user.token,
+//     },
+//     data: {
+//       "game": {
+//         "over": true,
+//       }
+//     }
+//   });
+// };
+
+// const getAnswerOne = function () {
+//   console.log('inside answerOne');
+//   return $.ajax({
+//     url: app.host + '/songs/'
+//   })
+// }
 
 module.exports = {
   signUp,
@@ -104,7 +131,7 @@ module.exports = {
   signOut,
   changePassword,
   updateGame,
-  createGame,
-  gameOver,
-  getStats,
+  createPlaylist,
+  //gameOver,
+  getSong,
 };
