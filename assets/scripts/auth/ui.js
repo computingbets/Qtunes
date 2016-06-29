@@ -25,10 +25,14 @@ const signOutSuccess = () => {
  console.log('User signed out successfully');
  app.user = null;
 };
+const displayPlaylistSuccess = (data) => {
+  $('#playlist-display').append('Your playlist: ' + app.data.song);
+};
 
 module.exports = {
  success,
  failure,
  signInSuccess,
- signOutSuccess
+ signOutSuccess,
+ displayPlaylistSuccess
 };

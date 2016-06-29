@@ -16,7 +16,7 @@ const onSignUp = (event) => {
 
 const onSignIn = (event) => {
  event.preventDefault();
- getUserIDPlaylist();
+ //api.getUserIDPlaylist();
  let data = getFormFields(event.target);
  api.signIn(data)
  .done(ui.signInSuccess)
@@ -38,23 +38,28 @@ const onChangePassword = (event) => {
  .fail(ui.failure);
 };
 
+// const onAddToPlaylist = (data) => {
+//   event.preventDefault();
+//   api.addToPlaylist(data)
+//   .done(ui.success)
+//   .fail(ui.failure);
+// };
+
 const onGetSong = (event) => {
   event.preventDefault();
   let data = $(event.target).attr("id");
+  console.log(data);
   api.getSong(data)
-  .done(onAddToPlaylist(data))
+  .done(api.addToPlaylist(data))
   .fail(ui.failure);
 };
 
-const onAddToPlaylist = (data) => {
+const onDisplayPlaylist = (event) => {
   event.preventDefault();
-  api.addToPlaylist(data)
-  .done(ui.success)
+  console.log("HI");
+  api.displayPlaylist()
+  .done(ui.displayPlaylistSuccess)
   .fail(ui.failure);
-};
-
-const getUserIDPlaylist = () => {
-  
 };
 
 const onNavSignUp = () => {
@@ -78,6 +83,7 @@ const addHandlers = () => {
  $('#nav-sign-in').on('click', onNavSignIn);
  $('#nav-options').on('click', onNavOptions);
  $('.answers').on('click', onGetSong);
+ $('#display-playlist').on('click', onDisplayPlaylist);
 };
 //
 module.exports = {

@@ -41,35 +41,35 @@ const changePassword = function (data){
   });
 };
 
-const createPlaylist = function (){
-  return $.ajax({
-    url: app.host + "/playlists",
-    method: 'POST',
-    headers: {
-    Authorization: 'Token token=' + app.user.token,
-    },
-  });
-};
+// const createPlaylist = function (){
+//   return $.ajax({
+//     url: app.host + "/playlists",
+//     method: 'POST',
+//     headers: {
+//     Authorization: 'Token token=' + app.user.token,
+//     },
+//   });
+// };
 
-const updateGame = function (index, value) {
-    // console.log(ui.createdGame);
-      return $.ajax({
-        url: app.host + "/playlists/" + app.playlist.id,
-        method: 'POST',
-        headers: {
-        Authorization: 'Token token=' + app.user.token,
-        },
-        data: {
-                "game": {
-                  "cell": {
-                    "index": index,
-                    "value": value,
-                  },
-                  "over": false
-                }
-              }
-      });
-  };
+// const updateGame = function (index, value) {
+//     // console.log(ui.createdGame);
+//       return $.ajax({
+//         url: app.host + "/playlists/" + app.playlist.id,
+//         method: 'POST',
+//         headers: {
+//         Authorization: 'Token token=' + app.user.token,
+//         },
+//         data: {
+//                 "game": {
+//                   "cell": {
+//                     "index": index,
+//                     "value": value,
+//                   },
+//                   "over": false
+//                 }
+//               }
+//       });
+//   };
 
 const getSong = function(data) {
   return $.ajax({
@@ -81,20 +81,43 @@ const getSong = function(data) {
   });
 };
 
-onst getUserIDPlaylist = function() {
+// const getUserIDPlaylist = function(data) {
+//   return $.ajax({
+//     url: app.host + '/users/' + app.user.id,
+//     method: 'POST',
+//     headers: {
+//       Authorization: 'Token token=' + app.user.token,
+//     },
+//   });
+// };
+
+const addToPlaylist = function(data) {
+  //let id = getUserIDPlaylist();
   return $.ajax({
-    url: app.host + '/users/' + app.current_user.id,
-    method: 'GET',
+    url: app.host + '/playlists/',
+    method: 'POST',
     headers: {
       Authorization: 'Token token=' + app.user.token,
     },
+    data: {
+      "playlist": {
+      "song_id": data,
+      "user_id": app.user.id,
+      // "title": song.title,
+      // "artist": song.artist,
+      // "links": song.links,
+    }
+  }
   });
 };
 
-const addToPlaylist = function(data) {
+const displayPlaylist = function() {
   return $.ajax({
-    url: app.host + 'playlists',
-    method: 'PATCH',
+    //this needs to be changed
+    //
+    //
+    url: app.host + '/playlists/',
+    method: 'GET',
     headers: {
       Authorization: 'Token token=' + app.user.token,
     },
@@ -130,8 +153,9 @@ module.exports = {
   signIn,
   signOut,
   changePassword,
-  updateGame,
-  createPlaylist,
-  //gameOver,
+  //updateGame,
+  //createPlaylist,
   getSong,
+  addToPlaylist,
+  displayPlaylist,
 };
