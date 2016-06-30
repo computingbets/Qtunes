@@ -50,8 +50,11 @@ const onGetSong = (event) => {
   let data = $(event.target).attr("id");
   console.log(data);
   api.getSong(data)
-  .done(api.addToPlaylist(data))
+  .done(ui.success)
   .fail(ui.failure);
+  api.addToPlaylist(data)
+  .done(ui.success)
+  .fail(ui.failure)
 };
 
 const onDisplayPlaylist = (event) => {

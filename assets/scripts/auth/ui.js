@@ -26,7 +26,16 @@ const signOutSuccess = () => {
  app.user = null;
 };
 const displayPlaylistSuccess = (data) => {
-  $('#playlist-display').append('Your playlist: ' + app.data.song);
+  //console.log(data.playlist);
+  let playlistArr = data.playlists;
+  for (let i = 0; i < playlistArr.length; i++) {
+    let each = playlistArr[i];
+    if (each.user_id === app.user.id){
+      console.log(each)
+      $('#playlist-display').html(each.song.title);
+    }
+  }
+  // $('#playlist-display').append('Your playlist: ' + app.song.id);
 };
 
 module.exports = {
