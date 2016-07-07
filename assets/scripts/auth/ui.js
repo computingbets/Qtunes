@@ -3,6 +3,8 @@
 'use strict';
 
 const app = require('../app.js');
+const api = require('./api');
+const handlebarsTemplate = require('../templates/display-playlist.handlebars');
 
 const success = (data) => {
  if (data) {
@@ -10,6 +12,11 @@ const success = (data) => {
  } else {
    console.log('Success');
  }
+};
+
+const displaySongsSuccess =(data) => {
+  console.log(data);
+  $('#playlist-display').append(handlebarsTemplate({data}))
 };
 
 const failure = (error) => {
@@ -25,18 +32,30 @@ const signOutSuccess = () => {
  console.log('User signed out successfully');
  app.user = null;
 };
+
+const getSong = function(data) {
+  return $.ajax({
+    url: app.host + '/songs/' + data,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+  });
+};
+
 const displayPlaylistSuccess = (data) => {
   //console.log(data.playlist);
-  let playlistArr = data.playlists;
+  console.log(data);
+  let playlistArr = data;
+  console.log(playlistArr);
   for (let i = 0; i < playlistArr.length; i++) {
-    let each = playlistArr[i];
-    if (each.user_id === app.user.id){
-      console.log(each)
-      $('#playlist-display').html(each.song.title);
+    getSong(playlistArr[i].song_id)
+      .done(displaySongsSuccess)
+      .fail(failure);
     }
-  }
+
+  };
   // $('#playlist-display').append('Your playlist: ' + app.song.id);
-};
 
 module.exports = {
  success,

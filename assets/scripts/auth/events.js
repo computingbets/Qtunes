@@ -54,7 +54,8 @@ const onGetSong = (event) => {
   .fail(ui.failure);
   api.addToPlaylist(data)
   .done(ui.success)
-  .fail(ui.failure)
+  .fail(ui.failure);
+  //save playlist id
 };
 
 const onDisplayPlaylist = (event) => {
@@ -62,6 +63,24 @@ const onDisplayPlaylist = (event) => {
   console.log("HI");
   api.displayPlaylist()
   .done(ui.displayPlaylistSuccess)
+  .fail(ui.failure);
+};
+
+const onUpdateSong = (event) => {
+  event.preventDefault();
+  let songIDUpdate = $('#update-song-id').val();
+    let updateTitle = $('#update-title').val();
+    let updateArtist = $('#update-artist').val();
+    let updateLinks= $('#update-links').val();
+  api.updateSong(songIDUpdate, updateTitle, updateArtist, updateLinks)
+  .done(ui.success)
+  .fail(ui.failure);
+};
+
+const onDeletePlaylist = (event) => {
+  event.preventDefault();
+  api.deletePlaylist()
+  .done(ui.sucess)
   .fail(ui.failure);
 };
 
@@ -87,6 +106,8 @@ const addHandlers = () => {
  $('#nav-options').on('click', onNavOptions);
  $('.answers').on('click', onGetSong);
  $('#display-playlist').on('click', onDisplayPlaylist);
+ $('#update-song').on('click', onUpdateSong);
+ $('#delete-playlist').on('click', onDeletePlaylist);
 };
 //
 module.exports = {

@@ -51,25 +51,23 @@ const changePassword = function (data){
 //   });
 // };
 
-// const updateGame = function (index, value) {
-//     // console.log(ui.createdGame);
-//       return $.ajax({
-//         url: app.host + "/playlists/" + app.playlist.id,
-//         method: 'POST',
-//         headers: {
-//         Authorization: 'Token token=' + app.user.token,
-//         },
-//         data: {
-//                 "game": {
-//                   "cell": {
-//                     "index": index,
-//                     "value": value,
-//                   },
-//                   "over": false
-//                 }
-//               }
-//       });
-//   };
+const updateSong = function (songIDUpdate, updatedTitle, updatedArtist, updatedLinks) {
+  return $.ajax(
+  {
+    url: app.host + '/songs/' + songIDUpdate,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+    data :{
+          "song": {
+            "title": updatedTitle,
+            "artist": updatedArtist,
+            "links" : updatedLinks,
+            }
+          }
+  });
+};
 
 const getSong = function(data) {
   return $.ajax({
@@ -116,7 +114,7 @@ const displayPlaylist = function() {
     //this needs to be changed
     //
     //
-    url: app.host + '/playlists/',
+    url: app.host + '/playlists/' + app.user.id,
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + app.user.token,
@@ -124,6 +122,25 @@ const displayPlaylist = function() {
   });
 };
 
+const deletePlaylist = function () {
+  return $.ajax({
+    url: app.host + '/playlists/' + app.user.id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+  });
+};
+// const getSongFromPlaylist = function() {
+//   return $.ajax({
+//     url: app.host + '/playlists/song',
+//     method: 'GET',
+//     headers: {
+//       Authorization: 'Token token=' + app.user.token,
+//
+//     },
+//   })
+// }
 // const gameOver = function() {
 //   // console.log("You're inside gameOver");
 //   // console.log("app.game is ", app.game);
@@ -153,9 +170,9 @@ module.exports = {
   signIn,
   signOut,
   changePassword,
-  //updateGame,
-  //createPlaylist,
   getSong,
   addToPlaylist,
   displayPlaylist,
+  updateSong,
+  deletePlaylist,
 };
