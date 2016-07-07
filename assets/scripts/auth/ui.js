@@ -16,7 +16,7 @@ const success = (data) => {
 
 const displaySongsSuccess =(data) => {
   console.log(data);
-  $('#playlist-display').append(handlebarsTemplate({data}))
+  $('#playlist-display').append(handlebarsTemplate({data}));
 };
 
 const failure = (error) => {
@@ -31,6 +31,13 @@ const signInSuccess = (data) => {
 const signOutSuccess = () => {
  console.log('User signed out successfully');
  app.user = null;
+};
+
+let playlistData = "";
+const createPlaylistSuccess = (data) => {
+  console.log(data);
+  app.user = playlist.data;
+  let playlistData = playlist.id;
 };
 
 const getSong = function(data) {
@@ -62,5 +69,6 @@ module.exports = {
  failure,
  signInSuccess,
  signOutSuccess,
- displayPlaylistSuccess
+ displayPlaylistSuccess,
+ createPlaylistSuccess
 };

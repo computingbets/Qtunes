@@ -49,12 +49,16 @@ const onGetSong = (event) => {
   event.preventDefault();
   let data = $(event.target).attr("id");
   console.log(data);
-  api.getSong(data)
-  .done(ui.success)
+  // api.getSong(data)
+  // .done(ui.success)
+  // .fail(ui.failure);
+  api.createPlaylist(data)
+  .done(ui.createPlaylistSuccess)
   .fail(ui.failure);
-  api.addToPlaylist(data)
-  .done(ui.success)
-  .fail(ui.failure);
+  // api.updatePlaylist(data, ui.playlistData)
+  // .done(ui.success)
+  // .fail(ui.failure);
+
   //save playlist id
 };
 

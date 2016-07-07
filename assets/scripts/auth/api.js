@@ -89,8 +89,7 @@ const getSong = function(data) {
 //   });
 // };
 
-const addToPlaylist = function(data) {
-  //let id = getUserIDPlaylist();
+const createPlaylist = function(data) {
   return $.ajax({
     url: app.host + '/playlists/',
     method: 'POST',
@@ -106,6 +105,23 @@ const addToPlaylist = function(data) {
       // "links": song.links,
     }
   }
+  });
+};
+
+const updatePlaylist = function (data, playlistData) {
+  return $.ajax({
+    url: app.host + '/playlists/' + playlistData,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+    data :{
+          "playlist": {
+            "song_id": data,
+            // "artist": updatedArtist,
+            // "links" : updatedLinks,
+            }
+          }
   });
 };
 
@@ -171,8 +187,9 @@ module.exports = {
   signOut,
   changePassword,
   getSong,
-  addToPlaylist,
+  createPlaylist,
   displayPlaylist,
   updateSong,
   deletePlaylist,
+  updatePlaylist,
 };
