@@ -91,20 +91,17 @@ const getSong = function(data) {
 
 const createPlaylist = function(data) {
   return $.ajax({
-    url: app.host + '/playlists/',
+    url: app.host + '/playlists',
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + app.user.token,
     },
     data: {
       "playlist": {
-      "song_id": data,
-      "user_id": app.user.id,
-      // "title": song.title,
-      // "artist": song.artist,
-      // "links": song.links,
-    }
-  }
+        "song_id": data,
+        "user_id": app.user.id
+      }
+    },
   });
 };
 
