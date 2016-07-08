@@ -36,8 +36,7 @@ const signOutSuccess = () => {
 let playlistData = "";
 const createPlaylistSuccess = (data) => {
   console.log(data);
-  app.user = playlist.data;
-  let playlistData = playlist.id;
+  app.playlist = data.playlist;
 };
 
 const getSong = function(data) {
@@ -51,24 +50,21 @@ const getSong = function(data) {
 };
 
 const displayPlaylistSuccess = (data) => {
-  //console.log(data.playlist);
   console.log(data);
-  let playlistArr = data;
-  console.log(playlistArr);
-  for (let i = 0; i < playlistArr.length; i++) {
-    getSong(playlistArr[i].song_id)
-      .done(displaySongsSuccess)
-      .fail(failure);
-    }
-
+  //console.log(playlistArr);
+  $('#playlist-display').append(handlebarsTemplate({data}));
   };
   // $('#playlist-display').append('Your playlist: ' + app.song.id);
 
+const deleteSuccess = () => {
+  $('#playlist-display').html("");
+}
 module.exports = {
  success,
  failure,
  signInSuccess,
  signOutSuccess,
  displayPlaylistSuccess,
- createPlaylistSuccess
+ createPlaylistSuccess,
+ deleteSuccess,
 };

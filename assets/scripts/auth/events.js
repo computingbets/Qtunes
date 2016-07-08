@@ -48,6 +48,7 @@ const onChangePassword = (event) => {
 const onGetSong = (event) => {
   event.preventDefault();
   let data = $(event.target).attr("id");
+  $('.answers').off('click');
   console.log(data);
   // api.getSong(data)
   // .done(ui.success)
@@ -55,11 +56,6 @@ const onGetSong = (event) => {
   api.createPlaylist(data)
   .done(ui.createPlaylistSuccess)
   .fail(ui.failure);
-  // api.updatePlaylist(data, ui.playlistData)
-  // .done(ui.success)
-  // .fail(ui.failure);
-
-  //save playlist id
 };
 
 const onDisplayPlaylist = (event) => {
@@ -84,7 +80,7 @@ const onUpdateSong = (event) => {
 const onDeletePlaylist = (event) => {
   event.preventDefault();
   api.deletePlaylist()
-  .done(ui.sucess)
+  .done(ui.deleteSuccess)
   .fail(ui.failure);
 };
 

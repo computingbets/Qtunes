@@ -130,7 +130,7 @@ const displayPlaylist = function() {
     //this needs to be changed
     //
     //
-    url: app.host + '/playlists/' + app.user.id,
+    url: app.host + '/playlists/' + app.playlist.id,
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + app.user.token,
@@ -140,7 +140,7 @@ const displayPlaylist = function() {
 
 const deletePlaylist = function () {
   return $.ajax({
-    url: app.host + '/playlists/' + app.user.id,
+    url: app.host + '/playlists/' + app.playlist.id,
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + app.user.token,
