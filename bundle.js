@@ -308,7 +308,7 @@ webpackJsonp([0],[
 
 	var createPlaylist = function createPlaylist(data) {
 	  return $.ajax({
-	    url: app.host + '/playlists/',
+	    url: app.host + '/playlists',
 	    method: 'POST',
 	    headers: {
 	      Authorization: 'Token token=' + app.user.token
@@ -415,7 +415,7 @@ webpackJsonp([0],[
 
 	module.exports = {
 	  //host: 'http://localhost:3000',
-	  host: 'https://qtunes-server.herokuapp.com/'
+	  host: 'https://qtunes-server.herokuapp.com'
 	};
 
 /***/ },
