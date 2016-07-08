@@ -415,11 +415,7 @@ webpackJsonp([0],[
 	'use strict';
 
 	module.exports = {
-<<<<<<< HEAD
-	  //host: 'http://localhost:3000',
-=======
 	  // host: 'http://localhost:3000',
->>>>>>> master
 	  host: 'https://qtunes-server.herokuapp.com'
 	};
 
