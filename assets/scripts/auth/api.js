@@ -93,6 +93,7 @@ const createPlaylist = function(data) {
   return $.ajax({
     url: app.host + '/playlists',
     method: 'POST',
+    dataType: 'json',
     headers: {
       Authorization: 'Token token=' + app.user.token,
     },
