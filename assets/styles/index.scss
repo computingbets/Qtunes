@@ -41,6 +41,50 @@ body
    border-style: solid;
    margin: 5px;
  }
+
+ .answers {
+   border-style: solid;
+   margin: 5px;
+   border-color: #330033;
+ }
+
+#update-song-id, #update-artist, #update-title, #update-links {
+   color: #c6ff1a;
+   border-color: #330033;
+ }
+
+ .qtext {
+   color: #99ccff
+ }
+
+ .container {
+   background-color: #99ccff;
+   color: purple;
+}
+   .q1, p, h4 {
+     color: purple;
+   }
+
+  //  buttons
+   #nav-sign-up, #nav-sign-in, #nav-options, #display-playlist, #delete-playlist, #update-song {
+     background-color: #c6ff1a;
+   }
+
+   ::-webkit-input-placeholder {
+   color: #99ccff;
+}
+
+.col-xs-12 {
+  width: 60%;
+}
+
+.deletion, .updation {
+  clear: both;
+}
+
+.answers {
+  color: #99ccff
+}
  //
  // .answerqtwo {
  //   border-style: solid;
