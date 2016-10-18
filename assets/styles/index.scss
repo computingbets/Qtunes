@@ -43,8 +43,20 @@ body
    border-color: #330033;
  }
 
+<<<<<<< HEAD
 #update-song-id, #update-artist, #update-title, #update-links {
    color: #c6ff1a;
+=======
+ .answers {
+   border-style: solid;
+   margin: 5px;
+   border-color: #330033;
+ }
+
+#update-song-id, #update-artist, #update-title, #update-links {
+   color: #c6ff1a;
+   border-color: #330033;
+>>>>>>> old-state
  }
 
  .qtext {
@@ -75,3 +87,25 @@ body
 .deletion, .updation {
   clear: both;
 }
+<<<<<<< HEAD
+=======
+
+.answers {
+  color: #99ccff
+}
+ //
+ // .answerqtwo {
+ //   border-style: solid;
+ //   margin: 5px;
+ // }
+ //
+ // .answerqthree {
+ //   border-style: solid;
+ //   margin: 5px;
+ // }
+ //
+ // .answerqfour {
+ //   border-style: solid;
+ //   margin: 5px;
+ // }
+>>>>>>> old-state
