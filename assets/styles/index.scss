@@ -40,19 +40,30 @@ body
  .answers {
    border-style: solid;
    margin: 5px;
+   border-color: #330033;
  }
- //
- // .answerqtwo {
- //   border-style: solid;
- //   margin: 5px;
- // }
- //
- // .answerqthree {
- //   border-style: solid;
- //   margin: 5px;
- // }
- //
- // .answerqfour {
- //   border-style: solid;
- //   margin: 5px;
- // }
+
+#update-song-id, #update-artist, #update-title, #update-links {
+   color: #c6ff1a;
+ }
+
+ .qtext {
+   color: #99ccff
+ }
+
+ .container {
+   background-color: #99ccff;
+   color: purple;
+}
+   .q1, p, h4 {
+     color: purple;
+   }
+
+  //  buttons
+   #nav-sign-up, #nav-sign-in, #nav-options, #display-playlist, #delete-playlist, #update-song {
+     background-color: #c6ff1a;
+   }
+
+   ::-webkit-input-placeholder {
+   color: #99ccff;
+}
