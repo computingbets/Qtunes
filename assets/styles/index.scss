@@ -40,13 +40,8 @@ body
  .answers {
    border-style: solid;
    margin: 5px;
-   border-color: #330033;
  }
 
-<<<<<<< HEAD
-#update-song-id, #update-artist, #update-title, #update-links {
-   color: #c6ff1a;
-=======
  .answers {
    border-style: solid;
    margin: 5px;
@@ -55,8 +50,7 @@ body
 
 #update-song-id, #update-artist, #update-title, #update-links {
    color: #c6ff1a;
-   border-color: #330033;
->>>>>>> old-state
+   border-color: #330033
  }
 
  .qtext {
@@ -74,6 +68,7 @@ body
   //  buttons
    #nav-sign-up, #nav-sign-in, #nav-options, #display-playlist, #delete-playlist, #update-song {
      background-color: #c6ff1a;
+     border-color: #330033
    }
 
    ::-webkit-input-placeholder {
@@ -87,8 +82,6 @@ body
 .deletion, .updation {
   clear: both;
 }
-<<<<<<< HEAD
-=======
 
 .answers {
   color: #99ccff
@@ -108,4 +101,3 @@ body
  //   border-style: solid;
  //   margin: 5px;
  // }
->>>>>>> old-state
